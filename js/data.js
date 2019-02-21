@@ -34,6 +34,24 @@ function populateTabs(data){
     }
 }
 
+function moveToHistory(scannedDateTime){
+
+    var firstTab = document.getElementById("firstTabHeader");
+
+
+    // var newElement = document.createElement('div');
+    // firstTab.appendChild(newElement);​​​​​​​​​​​​​​​​
+
+    for (let i = 0; i < scannedDateTime.length; i++) {
+        console.log(i);
+        var name = scannedDateTime[i]['scanTime'];
+        console.log(scannedDateTime);
+        if (scannedDateTime !== "undefined") {
+            firstTabHeader.innerHTML += '<div class="tab-header" id="">' + scannedDateTime + '</div>';
+        }
+    }
+}
+
 function getCurrentItems() {
     return $.ajax({
         url: 'https://aromn32tn6.execute-api.us-east-1.amazonaws.com/dev/get-current-items',
