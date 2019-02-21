@@ -54,6 +54,7 @@ p {
 
 footer.page-footer {
   margin: 0;
+  position: absolute;
 }
 
 .tab-item {
