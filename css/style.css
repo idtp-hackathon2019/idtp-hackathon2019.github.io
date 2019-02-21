@@ -54,6 +54,7 @@ p {
 
 footer.page-footer {
   margin: 0;
+  position: absolute;
 }
 
 .tab-item {
@@ -84,31 +85,31 @@ footer.page-footer {
 }
 
 .protien {
-position: absolute;
+float:center;
 top: 150px;
 left:350px;
 }
 
 .carbs {
-  position: absolute;
+  float:center;
   top: 150px;
   left:500px;
 }
 
 .calories {
-  position: absolute;
+  float:center;
   top: 350px;
   left:600px;
 }
 
 .fat {
-position: absolute;
+float:center;
 top: 350px;
 left:300px;
 }
 
 .sugar {
-  position: absolute;
+  float:center;
   top: 350px;
   left:500px;
 }
