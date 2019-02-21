@@ -38,9 +38,6 @@ function populateTabs(data){
     // firstTab.appendChild(newElement);​​​​​​​​​​​​​​​​
 }
 
-function changeDisplay(name){
-    console.log(name)
-}
 
 function getCurrentItems() {
     return $.ajax({
