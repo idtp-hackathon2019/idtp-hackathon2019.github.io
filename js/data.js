@@ -1,3 +1,5 @@
+var currentHighlight;
+
 $( document ).ready(function() {
     var data = {};
     getCurrentItems().then(function (jsondata) {
@@ -29,6 +31,11 @@ function populateTabs(data){
             newElement.innerHTML = name;
             tabArray[random].appendChild(newElement);
             document.getElementById(tmp).addEventListener("click", function(){
+                if (currentHighlight != null) {
+                    document.getElementById(currentHighlight).style.backgroundColor = "white";
+                }
+                currentHighlight = tmp;
+                document.getElementById(tmp).style.backgroundColor = "lightgrey";
                 displayData(nutritionData, itemName);
             },false);
         }
@@ -54,9 +61,7 @@ function moveToHistory(upc, scannedDateTime) {
     });
 }
 
-
 function displayData(nutritionData, itemName){
-    console.log(nutritionData);
 
     //$('nutritionalDataLabel').empty();
     //$('nutritionalDataLabel').append("NUTRITIONAL INFddsO<br>" + itemName);
