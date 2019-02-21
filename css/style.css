@@ -74,6 +74,10 @@ footer.page-footer {
   border-bottom: 1px solid #ddd;
 }
 
+.collection-item {
+  color:crimson;
+}
+
 /* Create information to help overlay the middle column with appropriate graphics (circles and words) */
 .columnmiddle {
   float:left;
