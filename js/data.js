@@ -190,6 +190,7 @@ function displayHistoricalData(data) {
   for(var j = 0; j < listOfItems.length; j++) {
     var item = listOfItems[j]['itemName'];
     var date = listOfItems[j]['scannedDate'];
+    date = date.split("-")[1] + "/" + date.split("-")[2] + "/" + date.split("-")[0]
     $('#historyTable').append("<tr>" +
       "<td>" + item + "</td>" +
       "<td>" + date + "</td>" +
