@@ -20,7 +20,7 @@ function populateTabs(data){
         let name = data[i]['itemName'];
         let upc =  data[i]['upc'];
         let scannedDate =  data[i]['items'][0]['scannedDateTime'];
-        let nurtionData = data[i]['nutritionData'];
+        let nutritionData = data[i]['nutritionData'];
         console.log(name);
         let tmp = "tab-item" + i;
         if (name !== "undefined") {
@@ -30,8 +30,7 @@ function populateTabs(data){
             newElement.innerHTML = name;
             firstTab.appendChild(newElement);
             document.getElementById(tmp).addEventListener("click", function(){
-                console.log(nurtionData);
-                alert(nurtionData);
+                displayData(nutritionData)
             },false);
         }
     }
@@ -59,7 +58,9 @@ function moveToHistory(upc, scannedDateTime) {
     });
 }
 
-
+function displayData(nutritionData){
+    console.log(nutritionData)
+}
 
 
 
