@@ -65,6 +65,10 @@ footer.page-footer {
   width: 100%;
 }
 
+h7{
+  font-weight: bold;
+  font-size: 30px;
+}
 .tab-item {
   display: -webkit-box;
   display: -webkit-flex;

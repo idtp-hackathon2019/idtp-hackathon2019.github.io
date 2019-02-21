@@ -1,16 +1,16 @@
 var currentHighlight;
 
 $( document ).ready(function() {
+  
     var data = {};
     getCurrentItems().then(function (jsondata) {
 
-        console.log("Getting current items...");
-        console.log(JSON.stringify(data));
+        //console.log("Getting current items...");
+        //console.log(JSON.stringify(data));
         populateTabs(jsondata);
         displayExpirationData(jsondata);
     });
     getHistoricalData().then(function(historyData){
-        displayRecentlyDeleted(historyData);
     });
 });
 
@@ -18,15 +18,21 @@ function populateTabs(data){
     var tabArray = [document.getElementById("firstTab"),document.getElementById("secondTab"),document.getElementById("thirdTab"),document.getElementById("fourthTab")];
 
     for (let i = 0; i < data.length; i++) {
-        let random = Math.floor((Math.random() * 4));
-        console.log(i);
+        let random = Math.floor((Math.random() * 3)+1);
+        //console.log(i);
         let name = data[i]['itemName'];
         let upc =  data[i]['upc'];
         let scannedDate =  data[i]['items'][0]['scannedDateTime'];
+        // let currentSubmission = false;
+
+        if (scannedDate.split(" ")[0] == "2019-2-21"){
+            random = 0;
+            console.log(scannedDate);
+        }
         let expData = data[i]['items'][0]['expData'];
         let nutritionData = data[i]['nutritionData'];
         let itemName = data[i]['itemName'];
-        console.log(name);
+        //console.log(name);
         let tmp = "tab-item" + i;
         if (name !== "undefined") {
             var newElement = document.createElement('DIV');
@@ -89,15 +95,6 @@ function displayData(nutritionData, itemName){
 
 }
 
-function displayRecentlyDeleted(data){
-    console.log(JSON.stringify(data));
-
-    for (let i = 0; i < data.length; i++) {
-        var newElement = document.createElement('DIV');
-        newElement.id = tmp;
-        newElement.className = "tab-item";
-    }
-}
 
 function getHistoricalData() {
     return $.ajax({
@@ -120,7 +117,7 @@ function displayExpirationData(data) {
 
   }
 
-  console.log(expList);
+  //console.log(expList);
   expList.sort(GetSortOrder("expDate"));
 
   $('#expDateTable').empty();
