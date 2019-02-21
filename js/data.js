@@ -8,6 +8,9 @@ $( document ).ready(function() {
         console.log(JSON.stringify(data));
         populateTabs(jsondata)
     });
+    getHistoricalData().then(function(historyData){
+        displayRecentlyDeleted(historyData);
+    });
 });
 
 function populateTabs(data){
@@ -83,4 +86,23 @@ function displayData(nutritionData, itemName){
       "</tr>" +
     "</table>");
 
+}
+
+
+function displayRecentlyDeleted(data){
+    console.log(JSON.stringify(data));
+
+    for (let i = 0; i < data.length; i++) {
+        var newElement = document.createElement('DIV');
+        newElement.id = tmp;
+        newElement.className = "tab-item";
+    }
+}
+
+function getHistoricalData() {
+    return $.ajax({
+        url: 'https://aromn32tn6.execute-api.us-east-1.amazonaws.com/dev/get-historical-data?startDate=2019-02-15&endDate=2022-01-15',
+        dataType: 'json',
+        async: true
+    });
 }
