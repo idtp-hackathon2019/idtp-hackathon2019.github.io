@@ -11,7 +11,6 @@ $( document ).ready(function() {
         displayExpirationData(jsondata);
     });
     getHistoricalData().then(function(historyData){
-        // displayRecentlyDeleted(historyData);
     });
 });
 
@@ -96,15 +95,6 @@ function displayData(nutritionData, itemName){
 
 }
 
-function displayRecentlyDeleted(data){
-    console.log(JSON.stringify(data));
-
-    for (let i = 0; i < data.length; i++) {
-        var newElement = document.createElement('DIV');
-        newElement.id = tmp;
-        newElement.className = "tab-item";
-    }
-}
 
 function getHistoricalData() {
     return $.ajax({
