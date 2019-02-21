@@ -1,9 +1,12 @@
+var currentHighlight;
+
 $( document ).ready(function() {
     var data = {};
     getCurrentItems().then(function (jsondata) {
 
         console.log("Getting current items...");
         console.log(JSON.stringify(data));
+        displayExpiration(jsondata);
         populateTabs(jsondata)
     });
 });
@@ -28,7 +31,9 @@ function populateTabs(data){
             newElement.innerHTML = name;
             tabArray[random].appendChild(newElement);
             document.getElementById(tmp).addEventListener("click", function(){
-                displayData(nutritionData)
+                displayData(nutritionData);
+                currentHighlight = tmp;
+                document.getElementById(tmp).style.backgroundColor = "lightgrey";
             },false);
         }
     }
@@ -58,6 +63,9 @@ function displayData(nutritionData){
     console.log(nutritionData)
 }
 
+function displayExpiration(data){
+
+}
 
 
 
