@@ -68,6 +68,7 @@ footer.page-footer {
 h7{
   font-weight: bold;
   font-size: 30px;
+  text-align: center;
 }
 .tab-item {
   display: -webkit-box;
