@@ -21,7 +21,7 @@ p {
 }
 
 .sidenav-trigger {
-  color: #26a69a;
+  color: #003b71;
 }
 
 .parallax-container {
@@ -40,7 +40,7 @@ p {
     top: 40%;
   }
   #index-banner .section {
-    top: 5%;
+    top: 10%;
   }
 }
 
