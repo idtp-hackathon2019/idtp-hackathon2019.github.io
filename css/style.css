@@ -113,3 +113,23 @@ left:300px;
   top: 350px;
   left:500px;
 }
+
+#nutritionTable {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.nutritionDataRow {
+  text-align: left;
+  padding: 8px;
+  border: none !important;
+}
+
+.bigger {
+  font-size: 200%;
+}
+
+.labelsize {
+  font-size: 120%;
+}
