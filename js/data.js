@@ -45,7 +45,7 @@ function changeDisplay(name){
 
 function populateTabs(data){
 
-    var firstTab = document.getElementById("secondTab");
+    var secondTab = document.getElementById("secondTab");
 
     for (let i = 0; i < data.length; i++) {
         console.log(i);
