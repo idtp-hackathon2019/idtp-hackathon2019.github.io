@@ -7,11 +7,6 @@ $( document ).ready(function() {
         populateTabs(jsondata)
     });
 
-    detectswipe('an_element_id',myfunction);
-
-    // detectswipe('an_other_element_id',my_other_function);
-
-
 
 
 });
@@ -20,36 +15,31 @@ function populateTabs(data){
 
     var firstTab = document.getElementById("firstTab");
 
-
-    // var newElement = document.createElement('div');
-    // firstTab.appendChild(newElement);​​​​​​​​​​​​​​​​
-
     for (let i = 0; i < data.length; i++) {
         console.log(i);
-        var name = data[i]['itemName'];
+        let name = data[i]['itemName'];
+        let upc =  data[i]['upc'];
+        let scannedDate =  data[i]['items'][0]['scannedDateTime'];
+        let nurtionData = data[i]['nutritionData'];
         console.log(name);
+        let tmp = "tab-item" + i;
         if (name !== "undefined") {
-            firstTab.innerHTML += '<div class="tab-item" id="">' + name + '</div>';
+            var newElement = document.createElement('DIV');
+            newElement.id = tmp;
+            newElement.className = "tab-item";
+            newElement.innerHTML = name;
+            firstTab.appendChild(newElement);
+            document.getElementById(tmp).addEventListener("click", function(){
+                console.log(nurtionData);
+            },false);
         }
     }
-}
-
-function moveToHistory(scannedDateTime){
-
-    var firstTab = document.getElementById("firstTabHeader");
-
-
     // var newElement = document.createElement('div');
     // firstTab.appendChild(newElement);​​​​​​​​​​​​​​​​
+}
 
-    for (let i = 0; i < scannedDateTime.length; i++) {
-        console.log(i);
-        var name = scannedDateTime[i]['scanTime'];
-        console.log(scannedDateTime);
-        if (scannedDateTime !== "undefined") {
-            firstTabHeader.innerHTML += '<div class="tab-header" id="">' + scannedDateTime + '</div>';
-        }
-    }
+function changeDisplay(name){
+    console.log(name)
 }
 
 function getCurrentItems() {
