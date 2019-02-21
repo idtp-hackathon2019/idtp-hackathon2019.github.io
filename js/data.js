@@ -11,7 +11,7 @@ $( document ).ready(function() {
         displayExpirationData(jsondata);
     });
     getHistoricalData().then(function(historyData){
-        displayRecentlyDeleted(historyData);
+        // displayRecentlyDeleted(historyData);
     });
 });
 
@@ -19,11 +19,17 @@ function populateTabs(data){
     var tabArray = [document.getElementById("firstTab"),document.getElementById("secondTab"),document.getElementById("thirdTab"),document.getElementById("fourthTab")];
 
     for (let i = 0; i < data.length; i++) {
-        let random = Math.floor((Math.random() * 4));
+        let random = Math.floor((Math.random() * 3)+1);
         //console.log(i);
         let name = data[i]['itemName'];
         let upc =  data[i]['upc'];
         let scannedDate =  data[i]['items'][0]['scannedDateTime'];
+        // let currentSubmission = false;
+
+        if (scannedDate.split(" ")[0] == "2019-2-21"){
+            random = 0;
+            console.log(scannedDate);
+        }
         let expData = data[i]['items'][0]['expData'];
         let nutritionData = data[i]['nutritionData'];
         let itemName = data[i]['itemName'];
