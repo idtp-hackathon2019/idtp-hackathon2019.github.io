@@ -6,7 +6,6 @@ $( document ).ready(function() {
 
         console.log("Getting current items...");
         console.log(JSON.stringify(data));
-        displayExpiration(jsondata);
         populateTabs(jsondata)
     });
 });
@@ -22,6 +21,7 @@ function populateTabs(data){
         let scannedDate =  data[i]['items'][0]['scannedDateTime'];
         let expData = data[i]['items'][0]['expData'];
         let nutritionData = data[i]['nutritionData'];
+        let itemName = data[i]['itemName'];
         console.log(name);
         let tmp = "tab-item" + i;
         if (name !== "undefined") {
@@ -31,9 +31,12 @@ function populateTabs(data){
             newElement.innerHTML = name;
             tabArray[random].appendChild(newElement);
             document.getElementById(tmp).addEventListener("click", function(){
-                displayData(nutritionData);
+                if (currentHighlight != null) {
+                    document.getElementById(currentHighlight).style.backgroundColor = "white";
+                }
                 currentHighlight = tmp;
                 document.getElementById(tmp).style.backgroundColor = "lightgrey";
+                displayData(nutritionData, itemName);
             },false);
         }
     }
@@ -58,23 +61,26 @@ function moveToHistory(upc, scannedDateTime) {
     });
 }
 
+function displayData(nutritionData, itemName){
 
-function displayData(nutritionData){
-    console.log(nutritionData)
+    //$('nutritionalDataLabel').empty();
+    //$('nutritionalDataLabel').append("NUTRITIONAL INFddsO<br>" + itemName);
+    $("#nutritionalDataLabel").text(itemName).css("font-weight","Bold");
+
+
+    $('#nutritionTable').empty();
+    $('#nutritionTable').append("<table id=\"nutritionTable\">" +
+      "<tr class=\"nutritionDataRow\">" +
+        "<td style=\"text-align: center\"><span class=\"bigger\">" + nutritionData.proteins + "</span><br><span class=\"labelsize\">Protein</span></td>" +
+        "<td style=\"text-align: center\"><span class=\"bigger\">" + nutritionData.carbohydrates + "</span><br><span class=\"labelsize\">Carbs</span></td>" +
+      "</tr>" +
+      "<tr class=\"nutritionDataRow\">" +
+        "<td style=\"text-align: center\" colspan=2><span class=\"bigger\">" + nutritionData.calories + "</span><br><span class=\"labelsize\">Calories</span></td>" +
+      "</tr>" +
+      "<tr class=\"nutritionDataRow\">" +
+        "<td style=\"text-align: center\"><span class=\"bigger\">" + nutritionData.fat + "</span><br><span class=\"labelsize\">Fat</span></td>" +
+        "<td style=\"text-align: center\"><span class=\"bigger\">" + nutritionData.sugars + "</span><br><span class=\"labelsize\">Sugar</span></td>" +
+      "</tr>" +
+    "</table>");
+
 }
-
-function displayExpiration(data){
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
