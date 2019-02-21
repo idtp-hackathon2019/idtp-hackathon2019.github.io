@@ -19,7 +19,7 @@ function populateTabs(data){
     var tabArray = [document.getElementById("firstTab"),document.getElementById("secondTab"),document.getElementById("thirdTab"),document.getElementById("fourthTab")];
 
     for (let i = 0; i < data.length; i++) {
-        let random = Math.floor((Math.random() * 4));
+        let random = Math.floor((Math.random() * 3)+1);
         //console.log(i);
         let name = data[i]['itemName'];
         let upc =  data[i]['upc'];
