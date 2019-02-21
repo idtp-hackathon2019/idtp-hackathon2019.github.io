@@ -15,28 +15,31 @@ function populateTabs(data){
 
     var firstTab = document.getElementById("firstTab");
 
-
-    // var newElement = document.createElement('div');
-    // firstTab.appendChild(newElement);​​​​​​​​​​​​​​​​
-
     for (let i = 0; i < data.length; i++) {
         console.log(i);
-        var name = data[i]['itemName'];
-        var upc =  data[i]['upc'];
-        var scannedDate =  data[i]['items'][0]['scannedDateTime'];
+        let name = data[i]['itemName'];
+        let upc =  data[i]['upc'];
+        let scannedDate =  data[i]['items'][0]['scannedDateTime'];
+        let nurtionData = data[i]['nutritionData'];
         console.log(name);
+        let tmp = "tab-item" + i;
         if (name !== "undefined") {
-            firstTab.innerHTML += '<div class="tab-item" id="tab-item'+i+'">' + name + '</div>';
-            // $(#firstTab).append('<div class='tab-item' id='tab-item"+i">')
-            var tmp = "tab-item" + i;
-            document.getElementById(tmp).addEventListener("click", changeDisplay, true);
-            // firstTab.innerHTML += '<div class="tab-item" id="'+upc+"~"+scannedDate+'">' + name + '</div>';
+            var newElement = document.createElement('DIV');
+            newElement.id = tmp;
+            newElement.className = "tab-item";
+            newElement.innerHTML = name;
+            firstTab.appendChild(newElement);
+            document.getElementById(tmp).addEventListener("click", function(){
+                console.log(nurtionData);
+            },false);
         }
     }
+    // var newElement = document.createElement('div');
+    // firstTab.appendChild(newElement);​​​​​​​​​​​​​​​​
 }
 
-function changeDisplay(){
-    console.log("clicked")
+function changeDisplay(name){
+    console.log(name)
 }
 
 function getCurrentItems() {
