@@ -1,11 +1,12 @@
 var currentHighlight;
 
 $( document ).ready(function() {
+  
     var data = {};
     getCurrentItems().then(function (jsondata) {
 
-        console.log("Getting current items...");
-        console.log(JSON.stringify(data));
+        //console.log("Getting current items...");
+        //console.log(JSON.stringify(data));
         populateTabs(jsondata);
         displayExpirationData(jsondata);
     });
@@ -19,7 +20,7 @@ function populateTabs(data){
 
     for (let i = 0; i < data.length; i++) {
         let random = Math.floor((Math.random() * 4));
-        console.log(i);
+        //console.log(i);
         let name = data[i]['itemName'];
         let upc =  data[i]['upc'];
         let scannedDate =  data[i]['items'][0]['scannedDateTime'];
@@ -32,7 +33,7 @@ function populateTabs(data){
         let expData = data[i]['items'][0]['expData'];
         let nutritionData = data[i]['nutritionData'];
         let itemName = data[i]['itemName'];
-        console.log(name);
+        //console.log(name);
         let tmp = "tab-item" + i;
         if (name !== "undefined") {
             var newElement = document.createElement('DIV');
@@ -126,7 +127,7 @@ function displayExpirationData(data) {
 
   }
 
-  console.log(expList);
+  //console.log(expList);
   expList.sort(GetSortOrder("expDate"));
 
   $('#expDateTable').empty();
