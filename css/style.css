@@ -9,6 +9,8 @@
 nav ul a,
 nav .brand-logo {
   color: #444;
+  padding-left: 5px !important;
+;
 }
 
 p {
