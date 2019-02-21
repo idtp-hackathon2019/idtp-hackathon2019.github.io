@@ -2162,7 +2162,7 @@ html {
  * Remove the margin in all browsers (opinionated).
  */
 body {
-  margin: 0;
+  margin: 3;
 }
 
 /**
@@ -2945,6 +2945,10 @@ ul.staggered-list li {
   padding-top: 20px;
   color: #fff;
   background-color: #ee6e73;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 .page-footer .footer-copyright {

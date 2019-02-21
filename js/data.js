@@ -6,20 +6,18 @@ $( document ).ready(function() {
         console.log(JSON.stringify(data));
         populateTabs(jsondata)
     });
-
-
-
 });
 
 function populateTabs(data){
-
-    var firstTab = document.getElementById("firstTab");
+    var tabArray = [document.getElementById("firstTab"),document.getElementById("secondTab"),document.getElementById("thirdTab"),document.getElementById("fourthTab")];
 
     for (let i = 0; i < data.length; i++) {
+        let random = Math.floor((Math.random() * 4));
         console.log(i);
         let name = data[i]['itemName'];
         let upc =  data[i]['upc'];
         let scannedDate =  data[i]['items'][0]['scannedDateTime'];
+        let expData = data[i]['items'][0]['expData'];
         let nutritionData = data[i]['nutritionData'];
         console.log(name);
         let tmp = "tab-item" + i;
@@ -28,7 +26,7 @@ function populateTabs(data){
             newElement.id = tmp;
             newElement.className = "tab-item";
             newElement.innerHTML = name;
-            firstTab.appendChild(newElement);
+            tabArray[random].appendChild(newElement);
             document.getElementById(tmp).addEventListener("click", function(){
                 displayData(nutritionData)
             },false);
@@ -38,9 +36,6 @@ function populateTabs(data){
     // firstTab.appendChild(newElement);​​​​​​​​​​​​​​​​
 }
 
-function changeDisplay(name){
-    console.log(name)
-}
 
 function getCurrentItems() {
     return $.ajax({
@@ -57,6 +52,7 @@ function moveToHistory(upc, scannedDateTime) {
         async: true
     });
 }
+
 
 function displayData(nutritionData){
     console.log(nutritionData);

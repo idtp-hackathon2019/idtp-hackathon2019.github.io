@@ -15,6 +15,10 @@ p {
   line-height: 2rem;
 }
 
+.white background {
+  font: #ffffff;
+}
+
 .sidenav-trigger {
   color: #26a69a;
 }
@@ -54,7 +58,6 @@ p {
 
 footer.page-footer {
   margin: 0;
-  position: absolute;
 }
 
 .tab-item {
@@ -114,22 +117,22 @@ left:300px;
   left:500px;
 }
 
-#nutritionTable {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+nutritionTable {
+ font-family: arial, sans-serif;
+ border-collapse: collapse;
+ width: 100%;
 }
 
 .nutritionDataRow {
-  text-align: left;
-  padding: 8px;
-  border: none !important;
+ text-align: left;
+padding: 8px;
+ border: none !important;
 }
 
 .bigger {
-  font-size: 200%;
+ font-size: 200%;
 }
 
 .labelsize {
-  font-size: 120%;
+ font-size: 120%;
 }
