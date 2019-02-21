@@ -7,11 +7,6 @@ $( document ).ready(function() {
         populateTabs(jsondata)
     });
 
-    detectswipe('an_element_id',myfunction);
-
-    // detectswipe('an_other_element_id',my_other_function);
-
-
 
 
 });
@@ -27,12 +22,23 @@ function populateTabs(data){
     for (let i = 0; i < data.length; i++) {
         console.log(i);
         var name = data[i]['itemName'];
+        var upc =  data[i]['upc'];
+        var scannedDate =  data[i]['items'][0]['scannedDateTime'];
         console.log(name);
         if (name !== "undefined") {
-            firstTab.innerHTML += '<div class="tab-item" id="">' + name + '</div>';
+            firstTab.innerHTML += '<div class="tab-item" id="tab-item'+i+'">' + name + '</div>';
+            // $(#firstTab).append('<div class='tab-item' id='tab-item"+i">')
+            var tmp = "tab-item" + i;
+            document.getElementById(tmp).addEventListener("click", changeDisplay, true);
+            // firstTab.innerHTML += '<div class="tab-item" id="'+upc+"~"+scannedDate+'">' + name + '</div>';
         }
     }
 }
+
+function changeDisplay(){
+    console.log("change display");
+}
+
 
 function getCurrentItems() {
     return $.ajax({
