@@ -31,6 +31,7 @@ function populateTabs(data){
             firstTab.appendChild(newElement);
             document.getElementById(tmp).addEventListener("click", function(){
                 console.log(nurtionData);
+                alert(nurtionData);
             },false);
         }
     }
