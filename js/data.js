@@ -10,6 +10,9 @@ $( document ).ready(function() {
         populateTabs(jsondata);
         displayExpirationData(jsondata);
     });
+    getHistoricalData().then(function(historyData){
+        displayRecentlyDeleted(historyData);
+    });
 });
 
 function populateTabs(data){
@@ -87,6 +90,23 @@ function displayData(nutritionData, itemName){
 
 }
 
+function displayRecentlyDeleted(data){
+    console.log(JSON.stringify(data));
+
+    for (let i = 0; i < data.length; i++) {
+        var newElement = document.createElement('DIV');
+        newElement.id = tmp;
+        newElement.className = "tab-item";
+    }
+}
+
+function getHistoricalData() {
+    return $.ajax({
+        url: 'https://aromn32tn6.execute-api.us-east-1.amazonaws.com/dev/get-historical-data?startDate=2019-02-15&endDate=2022-01-15',
+        dataType: 'json',
+        async: true
+    });
+}
 function displayExpirationData(data) {
   var expList = [];
   for(x = 0; x < data.length; x++) {
