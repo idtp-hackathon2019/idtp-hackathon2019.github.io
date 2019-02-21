@@ -91,7 +91,7 @@ h7{
 } /* Top/Right/Bottom/Left Padding */
 
 .discover {
-  position: absolute;
+  position: relative;
   bottom:0;
   left:0;
   align-content: bottom;
