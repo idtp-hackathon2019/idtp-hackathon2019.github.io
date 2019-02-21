@@ -1,7 +1,7 @@
 var currentHighlight;
 
 $( document ).ready(function() {
-  
+
     var data = {};
     getCurrentItems().then(function (jsondata) {
 
@@ -135,9 +135,11 @@ function displayExpirationData(data) {
 
   for(var j = 0; j < expList.length; j++) {
     if(expList[j]['expDate'] < "2019-02-28") {
+      var date = expList[j]['expDate'].substr(5,expList[j]['expDate'].length-1);
+      var expDate = date.split("-")[0] + "/" + date.split("-")[1];
       $('#expDateTable').append("<tr>" +
         "<td>" + expList[j]['itemName'] + "</td>" +
-        "<td>" + expList[j]['expDate'] + "</td>" +
+        "<td>" + expDate + "</td>" +
       "</tr>"
       );
     }
