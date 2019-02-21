@@ -90,13 +90,6 @@ h7{
   padding: 10px 10px 0px 10px;
 } /* Top/Right/Bottom/Left Padding */
 
-.discover {
-  position: relative;
-  bottom:0;
-  left:0;
-  align-content: bottom;
-}
-
 .columnmiddle2 {
   float:left;
   width: 80%;
