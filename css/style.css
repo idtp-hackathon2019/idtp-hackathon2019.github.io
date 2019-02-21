@@ -9,6 +9,7 @@
 nav ul a,
 nav .brand-logo {
   color: #444;
+;
 }
 
 p {
@@ -29,9 +30,9 @@ p {
   height: auto;
   color: rgba(255,255,255,.9);
 }
-  .parallax-container .section {
-    width: 100%;
-  }
+.parallax-container .section {
+  width: 100%;
+}
 
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
@@ -92,9 +93,9 @@ footer.page-footer {
 }
 
 .protien {
-float:center;
-top: 150px;
-left:350px;
+  float:center;
+  top: 150px;
+  left:350px;
 }
 
 .carbs {
@@ -110,9 +111,9 @@ left:350px;
 }
 
 .fat {
-float:center;
-top: 350px;
-left:300px;
+  float:center;
+  top: 350px;
+  left:300px;
 }
 
 .sugar {
@@ -122,21 +123,21 @@ left:300px;
 }
 
 nutritionTable {
- font-family: arial, sans-serif;
- border-collapse: collapse;
- width: 100%;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
 .nutritionDataRow {
- text-align: left;
-padding: 8px;
- border: none !important;
+  text-align: left;
+  padding: 8px;
+  border: none !important;
 }
 
 .bigger {
- font-size: 200%;
+  font-size: 200%;
 }
 
 .labelsize {
- font-size: 120%;
+  font-size: 120%;
 }
