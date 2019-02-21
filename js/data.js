@@ -10,9 +10,19 @@ $( document ).ready(function() {
         populateTabs(jsondata);
         displayExpirationData(jsondata);
     });
-    getHistoricalData().then(function(historyData){
+    getHistoricalData("2019-2-21", "2024-12-15").then(function(historyData){
+      displayHistoricalData(historyData);
     });
+
 });
+
+function getHistoricalData(startDate, endDate) {
+  return $.ajax({
+    url: 'https://aromn32tn6.execute-api.us-east-1.amazonaws.com/dev/get-historical-data?startDate=' + startDate + '&endDate=' + endDate,
+    dataType: 'json',
+    async: true
+   });
+}
 
 function populateTabs(data){
     var tabArray = [document.getElementById("firstTab"),document.getElementById("secondTab"),document.getElementById("thirdTab"),document.getElementById("fourthTab")];
@@ -141,20 +151,53 @@ function displayExpirationData(data) {
     }
   }
 
+}
 
-  //TODO sort list by date.
-  /*
-  <table id="expDateTable">
-    <tr>
-      <th>Item</th>
-      <th>Exp. Date</th>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
-  </table>
-  */
+function displayHistoricalData(data) {
+  console.log("HUnter");
+  console.log(JSON.stringify(data));
+
+  $('#historyTable').empty();
+  //append header row
+  $('#historyTable').append("<table id=\"historyTable\">" +
+    "<tr>" +
+      "<th>Item</th>" +
+      "<th>Date</th>" +
+    "</tr>"
+  );
+
+  var listOfItems = [];
+
+  for(var x = 0; x < data.length; x++) {
+    var dateScanned = data[x]['dateScanned'];
+    for(var y = 0; y < data[x]['details'].length; y++) {
+      var item = data[x]['details'][y]['itemName'];
+      for(var z = 0; z < data[x]['details'][y]['items'].length; z++) {
+        //append items to listOfItems
+        var tmp = {};
+        tmp['scannedDate'] = dateScanned;//data[x]['details'][y]['items'][z]['scannedDateTime'].split(" ")[0];
+        tmp['itemName'] = item;
+        listOfItems.push(tmp);
+      }
+
+    }
+  }
+
+  listOfItems.sort(GetSortOrder("scannedDate"));
+  console.log(JSON.stringify(listOfItems));
+
+
+  for(var j = 0; j < listOfItems.length; j++) {
+    var item = listOfItems[j]['itemName'];
+    var date = listOfItems[j]['scannedDate'];
+    $('#historyTable').append("<tr>" +
+      "<td>" + item + "</td>" +
+      "<td>" + date + "</td>" +
+    "</tr>"
+    );
+  }
+
+
 }
 
 
