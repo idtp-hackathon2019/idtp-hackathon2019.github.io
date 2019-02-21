@@ -11,8 +11,6 @@ nav .brand-logo {
   color: #444;
 }
 
-
-
 p {
   line-height: 2rem;
 }
@@ -24,6 +22,7 @@ p {
 .parallax-container {
   min-height: 380px;
   line-height: 0;
+  height: auto;
   color: rgba(255,255,255,.9);
 }
   .parallax-container .section {
