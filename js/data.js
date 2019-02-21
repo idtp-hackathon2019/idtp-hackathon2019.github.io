@@ -6,7 +6,8 @@ $( document ).ready(function() {
 
         console.log("Getting current items...");
         console.log(JSON.stringify(data));
-        populateTabs(jsondata)
+        populateTabs(jsondata);
+        displayExpirationData(jsondata);
     });
     getHistoricalData().then(function(historyData){
         displayRecentlyDeleted(historyData);
@@ -88,7 +89,6 @@ function displayData(nutritionData, itemName){
 
 }
 
-
 function displayRecentlyDeleted(data){
     console.log(JSON.stringify(data));
 
@@ -105,4 +105,68 @@ function getHistoricalData() {
         dataType: 'json',
         async: true
     });
+}
+function displayExpirationData(data) {
+  var expList = [];
+  for(x = 0; x < data.length; x++) {
+    var itemName = data[x]['itemName'];
+    for(y = 0; y < data[x]['items'].length; y++) {
+      var expDate = data[x]['items'][y]['expDate'];
+      var tmp = {};
+      tmp['itemName'] = itemName;
+      tmp['expDate'] = expDate;
+      expList.push(tmp);
+    }
+
+  }
+
+  console.log(expList);
+  expList.sort(GetSortOrder("expDate"));
+
+  $('#expDateTable').empty();
+  //append header row
+  $('#expDateTable').append("<table id=\"expDateTable\">" +
+    "<tr>" +
+      "<th>Item</th>" +
+      "<th>Exp. Date</th>" +
+    "</tr>"
+  );
+
+  for(var j = 0; j < expList.length; j++) {
+    if(expList[j]['expDate'] < "2019-02-28") {
+      $('#expDateTable').append("<tr>" +
+        "<td>" + expList[j]['itemName'] + "</td>" +
+        "<td>" + expList[j]['expDate'] + "</td>" +
+      "</tr>"
+      );
+    }
+  }
+
+
+  //TODO sort list by date.
+  /*
+  <table id="expDateTable">
+    <tr>
+      <th>Item</th>
+      <th>Exp. Date</th>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  */
+}
+
+
+function GetSortOrder(arr) { //sorts by objects in a list
+  return function(a,b) {
+    if(a[arr] > b[arr]) {
+      return 1;
+    }
+    else if (a[arr] < b[arr]) {
+      return -1;
+    }
+    return 0;
+  }
 }
