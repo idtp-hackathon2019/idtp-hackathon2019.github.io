@@ -10,7 +10,7 @@ $( document ).ready(function() {
         displayExpirationData(jsondata);
     });
     getHistoricalData().then(function(historyData){
-        displayRecentlyDeleted(historyData);
+        // displayRecentlyDeleted(historyData);
     });
 });
 
@@ -23,6 +23,12 @@ function populateTabs(data){
         let name = data[i]['itemName'];
         let upc =  data[i]['upc'];
         let scannedDate =  data[i]['items'][0]['scannedDateTime'];
+        // let currentSubmission = false;
+
+        if (scannedDate.split(" ")[0] == "2019-2-21"){
+            random = 0;
+            console.log(scannedDate);
+        }
         let expData = data[i]['items'][0]['expData'];
         let nutritionData = data[i]['nutritionData'];
         let itemName = data[i]['itemName'];
