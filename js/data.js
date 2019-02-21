@@ -12,10 +12,10 @@ $( document ).ready(function() {
 });
 
 function populateTabs(data){
-
-    var firstTab = document.getElementById("firstTab");
+    var tabArray = [document.getElementById("firstTab"),document.getElementById("secondTab"),document.getElementById("thirdTab"),document.getElementById("fourthTab")];
 
     for (let i = 0; i < data.length; i++) {
+        let random = Math.floor((Math.random() * 4));
         console.log(i);
         let name = data[i]['itemName'];
         let upc =  data[i]['upc'];
@@ -28,7 +28,7 @@ function populateTabs(data){
             newElement.id = tmp;
             newElement.className = "tab-item";
             newElement.innerHTML = name;
-            firstTab.appendChild(newElement);
+            tabArray[random].appendChild(newElement);
             document.getElementById(tmp).addEventListener("click", function(){
                 displayData(nutritionData)
             },false);
