@@ -84,31 +84,31 @@ footer.page-footer {
 }
 
 .protien {
-float: left;
+float:left;
 top: 150px;
 left:350px;
 }
 
 .carbs {
-  position: absolute;
+  float:left;
   top: 150px;
   left:500px;
 }
 
 .calories {
-  position: absolute;
+  float:left;
   top: 350px;
   left:600px;
 }
 
 .fat {
-position: absolute;
+float:left;
 top: 350px;
 left:300px;
 }
 
 .sugar {
-  position: absolute;
+  float:left;
   top: 350px;
   left:500px;
 }
