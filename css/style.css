@@ -122,17 +122,17 @@ left:300px;
   left:500px;
 }
 
-.active, .collapsible:hover {
+.active, .collapsible-header:hover {
   background-color: #555;
 
 }
 
-.collapsible:after {
+.collapsible-header:after {
   content: '\002B';
   color: white;
   font-weight: bold;
   float: right;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .active:after {
