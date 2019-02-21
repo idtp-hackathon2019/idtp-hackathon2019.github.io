@@ -36,9 +36,8 @@ function populateTabs(data){
 }
 
 function changeDisplay(){
-    console.log("change display");
+    console.log("clicked")
 }
-
 
 function getCurrentItems() {
     return $.ajax({

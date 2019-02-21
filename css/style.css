@@ -68,3 +68,47 @@ footer.page-footer {
   background-color: #fff;
   border-bottom: 1px solid #ddd;
 }
+
+/* Create information to help overlay the middle column with appropriate graphics (circles and words) */
+.columnmiddle {
+  float:left;
+  width: 50%;
+  padding: 10px 10px 0px 10px;
+} /* Top/Right/Bottom/Left Padding */
+
+
+.columnmiddle2 {
+  float:left;
+  width: 80%;
+  padding: 10px 15px 0px 15px;
+}
+
+.protien {
+position: absolute;
+top: 150px;
+left:350px;
+}
+
+.carbs {
+  position: absolute;
+  top: 150px;
+  left:500px;
+}
+
+.calories {
+  position: absolute;
+  top: 350px;
+  left:600px;
+}
+
+.fat {
+position: absolute;
+top: 350px;
+left:300px;
+}
+
+.sugar {
+  position: absolute;
+  top: 350px;
+  left:500px;
+}
