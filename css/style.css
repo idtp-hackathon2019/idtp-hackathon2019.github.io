@@ -74,10 +74,6 @@ footer.page-footer {
   border-bottom: 1px solid #ddd;
 }
 
-.collection-item {
-  color:crimson;
-}
-
 /* Create information to help overlay the middle column with appropriate graphics (circles and words) */
 .columnmiddle {
   float:left;
@@ -120,21 +116,4 @@ left:300px;
   float:center;
   top: 350px;
   left:500px;
-}
-
-.active, .collapsible:hover {
-  background-color: #555;
-
-}
-
-.collapsible:after {
-  content: '\002B';
-  color: white;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
-}
-
-.active:after {
-  content: "\2212";
 }
