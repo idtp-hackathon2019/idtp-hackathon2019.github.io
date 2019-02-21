@@ -19,6 +19,7 @@ function populateTabs(data){
         let scannedDate =  data[i]['items'][0]['scannedDateTime'];
         let expData = data[i]['items'][0]['expData'];
         let nutritionData = data[i]['nutritionData'];
+        let itemName = data[i]['itemName'];
         console.log(name);
         let tmp = "tab-item" + i;
         if (name !== "undefined") {
@@ -28,7 +29,7 @@ function populateTabs(data){
             newElement.innerHTML = name;
             tabArray[random].appendChild(newElement);
             document.getElementById(tmp).addEventListener("click", function(){
-                displayData(nutritionData)
+                displayData(nutritionData, itemName);
             },false);
         }
     }
@@ -54,8 +55,13 @@ function moveToHistory(upc, scannedDateTime) {
 }
 
 
-function displayData(nutritionData){
+function displayData(nutritionData, itemName){
     console.log(nutritionData);
+
+    //$('nutritionalDataLabel').empty();
+    //$('nutritionalDataLabel').append("NUTRITIONAL INFddsO<br>" + itemName);
+    $("#nutritionalDataLabel").text(itemName).css("font-weight","Bold");
+
 
     $('#nutritionTable').empty();
     $('#nutritionTable').append("<table id=\"nutritionTable\">" +
