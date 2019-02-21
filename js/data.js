@@ -6,9 +6,6 @@ $( document ).ready(function() {
         console.log(JSON.stringify(data));
         populateTabs(jsondata)
     });
-
-
-
 });
 
 function populateTabs(data){
@@ -20,6 +17,7 @@ function populateTabs(data){
         let name = data[i]['itemName'];
         let upc =  data[i]['upc'];
         let scannedDate =  data[i]['items'][0]['scannedDateTime'];
+        let expData = data[i]['items'][0]['expData'];
         let nutritionData = data[i]['nutritionData'];
         console.log(name);
         let tmp = "tab-item" + i;
