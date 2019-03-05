@@ -1,0 +1,342 @@
+---
+swagger: "2.0"
+info:
+  version: "2019-02-20T17:36:03Z"
+  title: "itdp-hackathon"
+host: "aromn32tn6.execute-api.us-east-1.amazonaws.com"
+basePath: "/dev"
+schemes:
+- "https"
+paths:
+  /get-current-items:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        400:
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        500:
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:918709819404:function:itdp-hackathon-get-current-items/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        requestTemplates:
+          application/json: "{\r\n  \"method\": \"$context.httpMethod\",\r\n  \"headers\"\
+            : {\r\n    #foreach($header in $input.params().header.keySet())\r\n  \
+            \  \"$header\": \"$util.escapeJavaScript($input.params().header.get($header))\"\
+            \ #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"body\" : $input.json('$'),\r\
+            \n  \"params\": {\r\n    #foreach($param in $input.params().path.keySet())\r\
+            \n    \"$param\": \"$util.escapeJavaScript($input.params().path.get($param))\"\
+            \ #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"query\": {\r\
+            \n    #foreach($queryParam in $input.params().querystring.keySet())\r\n\
+            \    \"$queryParam\": \"$util.escapeJavaScript($input.params().querystring.get($queryParam))\"\
+            \ #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"stage-variables\"\
+            \ : {\r\n\t#foreach($key in $stageVariables.keySet())\r\n\t\"$key\" :\
+            \ \"$util.escapeJavaScript($stageVariables.get($key))\"\r\n\t\t#if($foreach.hasNext),#end\r\
+            \n\t\t\r\n\t#end\r\n\t}\r\n}"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: "'GET,OPTIONS'"
+              method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_match"
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        type: "mock"
+  /get-historical-data:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        400:
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        500:
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:918709819404:function:itdp-hackathon-get-historical-data/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        requestTemplates:
+          application/json: "{\r\n  \"method\": \"$context.httpMethod\",\r\n  \"headers\"\
+            : {\r\n    #foreach($header in $input.params().header.keySet())\r\n  \
+            \  \"$header\": \"$util.escapeJavaScript($input.params().header.get($header))\"\
+            \ #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"body\" : $input.json('$'),\r\
+            \n  \"params\": {\r\n    #foreach($param in $input.params().path.keySet())\r\
+            \n    \"$param\": \"$util.escapeJavaScript($input.params().path.get($param))\"\
+            \ #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"query\": {\r\
+            \n    #foreach($queryParam in $input.params().querystring.keySet())\r\n\
+            \    \"$queryParam\": \"$util.escapeJavaScript($input.params().querystring.get($queryParam))\"\
+            \ #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"stage-variables\"\
+            \ : {\r\n\t#foreach($key in $stageVariables.keySet())\r\n\t\"$key\" :\
+            \ \"$util.escapeJavaScript($stageVariables.get($key))\"\r\n\t\t#if($foreach.hasNext),#end\r\
+            \n\t\t\r\n\t#end\r\n\t}\r\n}"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: "'GET,OPTIONS'"
+              method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_match"
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        type: "mock"
+  /move-to-historical:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        400:
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        500:
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:918709819404:function:itdp-hackathon-move-to-historical/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        requestTemplates:
+          application/json: "{\r\n  \"method\": \"$context.httpMethod\",\r\n  \"headers\"\
+            : {\r\n    #foreach($header in $input.params().header.keySet())\r\n  \
+            \  \"$header\": \"$util.escapeJavaScript($input.params().header.get($header))\"\
+            \ #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"body\" : $input.json('$'),\r\
+            \n  \"params\": {\r\n    #foreach($param in $input.params().path.keySet())\r\
+            \n    \"$param\": \"$util.escapeJavaScript($input.params().path.get($param))\"\
+            \ #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"query\": {\r\
+            \n    #foreach($queryParam in $input.params().querystring.keySet())\r\n\
+            \    \"$queryParam\": \"$util.escapeJavaScript($input.params().querystring.get($queryParam))\"\
+            \ #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"stage-variables\"\
+            \ : {\r\n\t#foreach($key in $stageVariables.keySet())\r\n\t\"$key\" :\
+            \ \"$util.escapeJavaScript($stageVariables.get($key))\"\r\n\t\t#if($foreach.hasNext),#end\r\
+            \n\t\t\r\n\t#end\r\n\t}\r\n}"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: "'GET,OPTIONS'"
+              method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_match"
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        type: "mock"
+  /update-item:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        400:
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        500:
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:918709819404:function:itdp-hackathon-update-item/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        requestTemplates:
+          application/json: "{\r\n  \"method\": \"$context.httpMethod\",\r\n  \"headers\"\
+            : {\r\n    #foreach($header in $input.params().header.keySet())\r\n  \
+            \  \"$header\": \"$util.escapeJavaScript($input.params().header.get($header))\"\
+            \ #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"body\" : $input.json('$'),\r\
+            \n  \"params\": {\r\n    #foreach($param in $input.params().path.keySet())\r\
+            \n    \"$param\": \"$util.escapeJavaScript($input.params().path.get($param))\"\
+            \ #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"query\": {\r\
+            \n    #foreach($queryParam in $input.params().querystring.keySet())\r\n\
+            \    \"$queryParam\": \"$util.escapeJavaScript($input.params().querystring.get($queryParam))\"\
+            \ #if($foreach.hasNext),#end\r\n\r\n    #end\r\n  },\r\n  \"stage-variables\"\
+            \ : {\r\n\t#foreach($key in $stageVariables.keySet())\r\n\t\"$key\" :\
+            \ \"$util.escapeJavaScript($stageVariables.get($key))\"\r\n\t\t#if($foreach.hasNext),#end\r\
+            \n\t\t\r\n\t#end\r\n\t}\r\n}"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: "'GET,OPTIONS'"
+              method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_match"
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        type: "mock"
+definitions:
+  Empty:
+    type: "object"
+    title: "Empty Schema"
